@@ -1,0 +1,16 @@
+{
+  "isolatedModules": false,
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@domain/*": ["src/domain/*"],
+      "@components/*": ["src/components/*"],
+      "@entity/*": ["src/entity/*"],
+      "@infrastructures/*": ["src/infrastructures/*"],
+      "@mocks/*": ["src/mocks/*"],
+      "@di/*": ["src/di/*"],
+      "@repository/*": ["src/repository/*"],
+      "@viewModel/*": ["src/viewModel/*"]
+    }
+  }
+}
