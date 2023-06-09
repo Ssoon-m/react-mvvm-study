@@ -1,4 +1,4 @@
-import TodoView from "./components/todo/TodoView";
+import TodoView from "./views/TodoView";
 
 function App() {
   return (
