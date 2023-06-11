@@ -4,7 +4,14 @@ interface RequestConfig {
   signal?: AbortSignal;
 }
 
-class Http {
+export interface IHttp {
+  get<T>(
+    url: string,
+    config?: RequestConfig
+  ): Promise<{ data: T; headers: Headers }>;
+}
+
+export class Http implements IHttp {
   private readonly baseUrl: string;
   constructor() {
     this.baseUrl = "http://localhost:5173";
@@ -24,5 +31,3 @@ class Http {
     };
   }
 }
-
-export default Http;
