@@ -9,6 +9,9 @@ class TodoViewModel {
   getList() {
     return this.getTodoUseCase.getList();
   }
+  addList() {
+    return this.getTodoUseCase.addList();
+  }
 }
 
 export default TodoViewModel;

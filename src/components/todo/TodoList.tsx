@@ -1,9 +1,9 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import { TodoEntity } from "@entity/todo/TodoEntity";
+import { ITodoDTO } from "@domain/dto/todo/TodoDTO";
 
 interface Props {
-  todoList: TodoEntity[];
+  todoList: ITodoDTO[];
 }
 
 const TodoList = ({ todoList }: Props) => {

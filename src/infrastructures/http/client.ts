@@ -9,6 +9,11 @@ export interface IHttp {
     url: string,
     config?: RequestConfig
   ): Promise<{ data: T; headers: Headers }>;
+  post<T>(
+    url: string,
+    body?: any,
+    config?: RequestConfig
+  ): Promise<{ data: T; headers: Headers }>;
 }
 
 export class Http implements IHttp {
@@ -29,5 +34,26 @@ export class Http implements IHttp {
       data,
       headers,
     };
+  }
+  async post<T>(url: string, body?: any, config: RequestConfig = {}) {
+    const res = await fetch(this.baseUrl.concat(url), {
+      method: "POST",
+      headers: {
+        ...(body ? { "Content-Type": "application/json" } : {}),
+        ...(config.headers ?? {}),
+      },
+      signal: config.signal,
+      body: body ? JSON.stringify(body) : undefined,
+    });
+    const data: T = await res.json();
+    if (res.ok) {
+      const { headers } = res;
+      return {
+        data,
+        headers,
+      };
+    } else {
+      return Promise.reject(data);
+    }
   }
 }

@@ -8,4 +8,7 @@ export default class GetTodoUseCase {
   getList() {
     return this.todoRepository.getList();
   }
+  addList() {
+    return this.todoRepository.addList();
+  }
 }
