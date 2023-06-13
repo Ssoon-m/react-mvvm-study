@@ -1,4 +1,4 @@
-import { ITodoDTO } from "@domain/dto/todo/TodoDTO";
+import { ITodoParams } from "@domain/dto/todo/TodoDTO";
 import TodoRepository from "@repository/TodoRepository";
 
 export default class TodoUseCase {
@@ -9,7 +9,7 @@ export default class TodoUseCase {
   getList() {
     return this.todoRepository.getList();
   }
-  addList({ title, contents }: Omit<ITodoDTO, "id">) {
+  addList({ title, contents }: Omit<ITodoParams, "id">) {
     return this.todoRepository.addList({ title, contents });
   }
 }

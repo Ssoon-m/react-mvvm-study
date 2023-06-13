@@ -1,4 +1,4 @@
-import { ITodoDTO } from "@domain/dto/todo/TodoDTO";
+import TodoDTO, { ITodoParams } from "@domain/dto/todo/TodoDTO";
 import { Http, type IHttp } from "@infrastructures/http/client";
 
 export default class TodoRepository {
@@ -8,10 +8,10 @@ export default class TodoRepository {
   }
   public async getList() {
     return await this.client
-      .get<ITodoDTO[]>("/todo/list")
-      .then((res) => res.data);
+      .get<ITodoParams[]>("/todo/list")
+      .then((res) => res.data.map((todo) => new TodoDTO(todo)));
   }
-  public async addList({ title, contents }: Omit<ITodoDTO, "id">) {
+  public async addList({ title, contents }: Omit<ITodoParams, "id">) {
     return this.client
       .post<boolean>("/todo/list", {
         title,
