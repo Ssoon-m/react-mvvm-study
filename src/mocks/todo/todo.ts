@@ -20,7 +20,7 @@ const addList = rest.post(/\/todo\/list$/, (req, res, ctx) => {
     title,
     contents,
   });
-  return res(ctx.status(200), ctx.json({ errorMessage: "error" }));
+  return res(ctx.status(200), ctx.json(true));
 });
 
 export { getList, addList };
