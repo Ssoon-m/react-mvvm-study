@@ -11,7 +11,7 @@ const todoList: ITodoParams[] = [
 let currentId = 4;
 
 const getList = rest.get(/\/todo\/list$/, (req, res, ctx) => {
-  return res(ctx.status(200), ctx.json(todoList));
+  return res(ctx.status(200), ctx.delay(1000), ctx.json(todoList));
 });
 const addList = rest.post(/\/todo\/list$/, (req, res, ctx) => {
   const { title, contents } = req.body as Omit<ITodoParams, "id">;

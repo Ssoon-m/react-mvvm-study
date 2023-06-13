@@ -13,6 +13,7 @@ export const useGetTodoQuery = (callback: TodoViewModel) => {
   return useQuery({
     queryKey: extractKey.all,
     queryFn: () => callback.getList(),
+    suspense: true,
   });
 };
 
