@@ -8,16 +8,19 @@ const todoList: ITodoDTO[] = [
   { id: 4, title: "할일4", contents: "내용4" },
 ];
 
+let currentId = 4;
+
 const getList = rest.get(/\/todo\/list$/, (req, res, ctx) => {
   return res(ctx.status(200), ctx.json(todoList));
 });
 const addList = rest.post(/\/todo\/list$/, (req, res, ctx) => {
-  // todoList.push({
-  //   id: 5,
-  //   title: "할일5",
-  //   contents: "내용5",
-  // });
-  return res(ctx.status(400), ctx.json({ errorMessage: "error" }));
+  const { title, contents } = req.body as Omit<ITodoDTO, "id">;
+  todoList.push({
+    id: ++currentId,
+    title,
+    contents,
+  });
+  return res(ctx.status(200), ctx.json({ errorMessage: "error" }));
 });
 
 export { getList, addList };

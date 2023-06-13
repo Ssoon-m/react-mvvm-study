@@ -29,11 +29,15 @@ export class Http implements IHttp {
       },
     });
     const data: T = await res.json();
-    const { headers } = res;
-    return {
-      data,
-      headers,
-    };
+    if (res.ok) {
+      const { headers } = res;
+      return {
+        data,
+        headers,
+      };
+    } else {
+      return Promise.reject(data);
+    }
   }
   async post<T>(url: string, body?: any, config: RequestConfig = {}) {
     const res = await fetch(this.baseUrl.concat(url), {

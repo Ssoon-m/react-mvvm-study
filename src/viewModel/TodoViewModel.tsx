@@ -1,16 +1,18 @@
-import GetTodoUseCase from "@domain/usecase/todo/GetTodoUseCase";
+import { ITodoDTO } from "@domain/dto/todo/TodoDTO";
+import TodoUseCase from "@domain/usecase/todo/GetTodoUseCase";
+import { useQuery } from "@tanstack/react-query";
 
 class TodoViewModel {
-  private readonly getTodoUseCase: GetTodoUseCase;
-  constructor(getTodoUseCase: GetTodoUseCase) {
-    this.getTodoUseCase = getTodoUseCase;
+  private readonly TodoUseCase: TodoUseCase;
+  constructor(TodoUseCase: TodoUseCase) {
+    this.TodoUseCase = TodoUseCase;
   }
 
-  getList() {
-    return this.getTodoUseCase.getList();
+  async getList() {
+    return await this.TodoUseCase.getList();
   }
-  addList() {
-    return this.getTodoUseCase.addList();
+  addList({ title, contents }: Omit<ITodoDTO, "id">) {
+    return this.TodoUseCase.addList({ title, contents });
   }
 }
 

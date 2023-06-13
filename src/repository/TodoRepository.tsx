@@ -6,10 +6,17 @@ export default class TodoRepository {
   public constructor(client: IHttp) {
     this.client = client;
   }
-  public async getList(): Promise<ITodoDTO[]> {
-    return this.client.get<ITodoDTO[]>("/todo/list").then((res) => res.data);
+  public async getList() {
+    return await this.client
+      .get<ITodoDTO[]>("/todo/list")
+      .then((res) => res.data);
   }
-  public async addList(): Promise<ITodoDTO[]> {
-    return this.client.post<ITodoDTO[]>("/todo/list").then((res) => res.data);
+  public async addList({ title, contents }: Omit<ITodoDTO, "id">) {
+    return this.client
+      .post<boolean>("/todo/list", {
+        title,
+        contents,
+      })
+      .then((res) => res.data);
   }
 }

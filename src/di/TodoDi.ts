@@ -1,9 +1,9 @@
 import { Http } from "@infrastructures/http/client";
 import TodoRepository from "@repository/TodoRepository";
-import GetTodoUseCase from "@domain/usecase/todo/GetTodoUseCase";
+import TodoUseCase from "@domain/usecase/todo/GetTodoUseCase";
 import TodoViewModel from "@viewModel/TodoViewModel";
 
 const todoRepository = new TodoRepository(new Http());
-const getTodoUseCase = new GetTodoUseCase(todoRepository);
-const TodoDi = new TodoViewModel(getTodoUseCase);
+const todoUseCase = new TodoUseCase(todoRepository);
+const TodoDi = new TodoViewModel(todoUseCase);
 export default TodoDi;
