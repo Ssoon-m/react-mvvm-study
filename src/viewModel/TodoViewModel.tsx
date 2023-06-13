@@ -1,5 +1,5 @@
 import { ITodoDTO } from "@domain/dto/todo/TodoDTO";
-import TodoUseCase from "@domain/usecase/todo/GetTodoUseCase";
+import TodoUseCase from "@domain/usecase/todo/TodoUseCase";
 import { useQuery } from "@tanstack/react-query";
 
 class TodoViewModel {

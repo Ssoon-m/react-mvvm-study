@@ -1,7 +1,7 @@
 import { ITodoDTO } from "@domain/dto/todo/TodoDTO";
 import TodoRepository from "@repository/TodoRepository";
 
-export default class GetTodoUseCase {
+export default class TodoUseCase {
   private readonly todoRepository: TodoRepository;
   constructor(todoRepository: TodoRepository) {
     this.todoRepository = todoRepository;

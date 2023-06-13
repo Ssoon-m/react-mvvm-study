@@ -1,6 +1,6 @@
 import { Http } from "@infrastructures/http/client";
 import TodoRepository from "@repository/TodoRepository";
-import TodoUseCase from "@domain/usecase/todo/GetTodoUseCase";
+import TodoUseCase from "@domain/usecase/todo/TodoUseCase";
 import TodoViewModel from "@viewModel/TodoViewModel";
 
 const todoRepository = new TodoRepository(new Http());
